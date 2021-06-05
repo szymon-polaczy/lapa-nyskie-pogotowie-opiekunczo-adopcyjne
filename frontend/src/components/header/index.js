@@ -1,7 +1,5 @@
 import React from 'react'
-import { setup, styled } from 'goober'
-
-setup(React.createElement);
+import { styled } from 'goober'
 
 const StyledHeader = styled('header')`
   width: 100%;

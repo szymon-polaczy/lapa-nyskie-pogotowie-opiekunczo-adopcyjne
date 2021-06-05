@@ -1,6 +1,14 @@
+import React from 'react'
 import Header from './components/header'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from './pages/home'
+import { styled } from 'goober'
+
+const AppWrapper = styled('div')`
+  padding-left: 368px;
+`
 
 const App = () => {
   const [links, setLinks] = useState(null);
@@ -29,11 +37,16 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {links && <Header links={links} logo={logo} info={info} socials={socials}/>}
-      </header>
-    </div>
+    <AppWrapper className="App">
+      {links && <Header links={links} logo={logo} info={info} socials={socials}/>}
+      <Router>
+        <Switch>
+          <Route path="/">
+            <Home/>
+          </Route>
+        </Switch>
+      </Router>
+    </AppWrapper>
   );
 }
 
